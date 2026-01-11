@@ -1,3 +1,4 @@
+import { User } from '@/types';
 import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -31,8 +32,8 @@ export const ForgottenPasswordPage = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       // Check if user exists (mock check using localStorage)
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
-      const userExists = users.some((user: any) => user.email === email);
+      const users: Array<User> = JSON.parse(localStorage.getItem('users') || '[]');
+      const userExists = users.some((user: User) => user.email === email);
       
       if (!userExists) {
         setError('Uživatel s tímto emailem nebyl nalezen');
