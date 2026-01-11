@@ -88,6 +88,57 @@ export const RacesPage = () => {
     }
   };
 
+  const handleDeleteRide = (rideId: string) => {
+    if (!window.confirm('Opravdu chcete smazat tuto jízdu?')) {
+      return;
+    }
+
+    try {
+      apiService.deleteRide(rideId);
+      const loadedRides = apiService.getRidesByRace(selectedRace);
+      setRides(loadedRides);
+      alert('Jízda byla úspěšně smazána');
+    } catch (error) {
+      alert('Chyba při mazání jízdy');
+    }
+  };
+
+  const handleAcceptRide = (rideId: string) => {
+    if (!isAuthenticated || !user) {
+      alert('Pro přijetí nabídky se musíte přihlásit');
+      navigate('/login');
+      return;
+    }
+
+    try {
+      apiService.acceptRide(rideId, user.id);
+      const loadedRides = apiService.getRidesByRace(selectedRace);
+      setRides(loadedRides);
+      alert('Úspěšně jste přijali nabídku jízdy!');
+    } catch (error) {
+      alert(error instanceof Error ? error.message : 'Chyba při přijímání jízdy');
+    }
+  };
+
+  const handleCancelAcceptance = (rideId: string) => {
+    if (!isAuthenticated || !user) {
+      return;
+    }
+
+    if (!window.confirm('Opravdu chcete zrušit účast na této jízdě?')) {
+      return;
+    }
+
+    try {
+      apiService.cancelRideAcceptance(rideId, user.id);
+      const loadedRides = apiService.getRidesByRace(selectedRace);
+      setRides(loadedRides);
+      alert('Účast na jízdě byla zrušena');
+    } catch (error) {
+      alert(error instanceof Error ? error.message : 'Chyba při rušení účasti');
+    }
+  };
+
   const selectedRaceData = races.find(r => r.id === selectedRace);
 
   return (
@@ -352,11 +403,44 @@ export const RacesPage = () => {
                     <div className="text-sm text-dark-600">
                       Uživatel: <span className="font-semibold">{ride.userId}</span>
                     </div>
-                    {isAuthenticated && ride.userId !== user?.id && (
-                      <button className="text-sm font-semibold text-primary-600 hover:text-primary-700">
-                        Kontaktovat
-                      </button>
-                    )}
+                    <div className="flex gap-2">
+                      {isAuthenticated && ride.userId === user?.id && (
+                        <button 
+                          onClick={() => handleDeleteRide(ride.id)}
+                          className="text-sm font-semibold text-red-600 hover:text-red-700 px-3 py-1 rounded-lg hover:bg-red-50 transition-colors"
+                        >
+                          Smazat
+                        </button>
+                      )}
+                      {isAuthenticated && ride.userId !== user?.id && ride.type === RideType.OFFER && (
+                        <>
+                          {ride.passengers.includes(user?.id || '') ? (
+                            <button 
+                              onClick={() => handleCancelAcceptance(ride.id)}
+                              className="text-sm font-semibold text-yellow-600 hover:text-yellow-700 px-3 py-1 rounded-lg hover:bg-yellow-50 transition-colors"
+                            >
+                              Zrušit účast
+                            </button>
+                          ) : ride.availableSeats > ride.occupiedSeats ? (
+                            <button 
+                              onClick={() => handleAcceptRide(ride.id)}
+                              className="text-sm font-semibold text-accent-600 hover:text-accent-700 px-3 py-1 rounded-lg hover:bg-accent-50 transition-colors"
+                            >
+                              Přijmout nabídku
+                            </button>
+                          ) : (
+                            <span className="text-sm text-gray-400 italic">Obsazeno</span>
+                          )}
+                        </>
+                      )}
+                      {isAuthenticated && ride.userId !== user?.id && ride.type === RideType.REQUEST && (
+                        <button 
+                          className="text-sm font-semibold text-primary-600 hover:text-primary-700 px-3 py-1 rounded-lg hover:bg-primary-50 transition-colors"
+                        >
+                          Kontaktovat
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}

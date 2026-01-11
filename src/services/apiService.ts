@@ -48,7 +48,7 @@ const initializeMockData = () => {
   // Race Calendars
   if (!localStorage.getItem(STORAGE_KEYS.CALENDARS)) {
     const calendars: RaceCalendar[] = [
-      { id: '1', year: 2025, isActive: true },
+      { id: '1', year: 2026, isActive: true },
     ];
     localStorage.setItem(STORAGE_KEYS.CALENDARS, JSON.stringify(calendars));
   }
@@ -60,7 +60,7 @@ const initializeMockData = () => {
         id: '1',
         name: 'Pražský maraton',
         place: 'Praha',
-        date: '2025-05-04',
+        date: '2026-05-10',
         startTime: '09:00',
         web: 'https://www.runczech.com/cs/akce/maraton/informace/',
         trackLength: { id: '4', name: 'Maraton' },
@@ -70,26 +70,110 @@ const initializeMockData = () => {
       },
       {
         id: '2',
-        name: 'Běchovice-Praha',
+        name: 'Pražský půlmaraton',
         place: 'Praha',
-        date: '2025-09-13',
+        date: '2026-04-04',
+        startTime: '09:00',
+        web: 'https://www.runczech.com/cs/akce/pulmaraton/',
+        trackLength: { id: '3', name: 'Půlmaraton' },
+        trackType: { id: '1', name: 'Silnice' },
+        certifications: [{ id: '1', name: 'IAAF' }, { id: '2', name: 'AIMS' }],
+        raceCalendarId: '1',
+      },
+      {
+        id: '3',
+        name: 'Kolem Příhlupu',
+        place: 'Příhlup u Lednice',
+        date: '2026-06-13',
         startTime: '10:00',
-        web: 'https://www.behej.com/',
-        trackLength: { id: '2', name: '10K' },
+        web: 'https://www.kolempriglupu.cz/',
+        trackLength: { id: '3', name: 'Půlmaraton' },
+        trackType: { id: '2', name: 'Trail' },
+        certifications: [],
+        raceCalendarId: '1',
+      },
+      {
+        id: '4',
+        name: 'PIM - Půlmaraton Olomouc',
+        place: 'Olomouc',
+        date: '2026-06-20',
+        startTime: '09:30',
+        web: 'https://www.pim.cz/',
+        trackLength: { id: '3', name: 'Půlmaraton' },
         trackType: { id: '1', name: 'Silnice' },
         certifications: [],
         raceCalendarId: '1',
       },
       {
-        id: '3',
-        name: 'Brněnský půlmaraton',
-        place: 'Brno',
-        date: '2025-03-29',
+        id: '5',
+        name: 'Běhej lesy - Kunratický les',
+        place: 'Praha - Kunratice',
+        date: '2026-03-07',
         startTime: '10:00',
-        web: 'https://www.pulmaraton.cz/',
-        trackLength: { id: '3', name: 'Půlmaraton' },
-        trackType: { id: '1', name: 'Silnice' },
-        certifications: [{ id: '2', name: 'AIMS' }],
+        web: 'https://www.behejlesy.cz/',
+        trackLength: { id: '2', name: '10K' },
+        trackType: { id: '2', name: 'Trail' },
+        certifications: [],
+        raceCalendarId: '1',
+      },
+      {
+        id: '6',
+        name: 'Běhej lesy - Hvězdárna',
+        place: 'Praha - Petřín',
+        date: '2026-04-11',
+        startTime: '10:00',
+        web: 'https://www.behejlesy.cz/',
+        trackLength: { id: '2', name: '10K' },
+        trackType: { id: '2', name: 'Trail' },
+        certifications: [],
+        raceCalendarId: '1',
+      },
+      {
+        id: '7',
+        name: 'Běhej lesy - Divoká Šárka',
+        place: 'Praha - Šárka',
+        date: '2026-05-16',
+        startTime: '10:00',
+        web: 'https://www.behejlesy.cz/',
+        trackLength: { id: '2', name: '10K' },
+        trackType: { id: '2', name: 'Trail' },
+        certifications: [],
+        raceCalendarId: '1',
+      },
+      {
+        id: '8',
+        name: 'Běhej lesy - Prokopské údolí',
+        place: 'Praha - Prokopské údolí',
+        date: '2026-09-12',
+        startTime: '10:00',
+        web: 'https://www.behejlesy.cz/',
+        trackLength: { id: '2', name: '10K' },
+        trackType: { id: '2', name: 'Trail' },
+        certifications: [],
+        raceCalendarId: '1',
+      },
+      {
+        id: '9',
+        name: 'Běhej lesy - Stromovka',
+        place: 'Praha - Stromovka',
+        date: '2026-10-10',
+        startTime: '10:00',
+        web: 'https://www.behejlesy.cz/',
+        trackLength: { id: '2', name: '10K' },
+        trackType: { id: '2', name: 'Trail' },
+        certifications: [],
+        raceCalendarId: '1',
+      },
+      {
+        id: '10',
+        name: 'Běhej lesy - Finále',
+        place: 'Praha',
+        date: '2026-11-14',
+        startTime: '10:00',
+        web: 'https://www.behejlesy.cz/',
+        trackLength: { id: '2', name: '10K' },
+        trackType: { id: '2', name: 'Trail' },
+        certifications: [],
         raceCalendarId: '1',
       },
     ];
@@ -115,6 +199,16 @@ const initializeMockData = () => {
         password: 'password123',
         firstName: 'Jana',
         lastName: 'Nováková',
+        city: 'Praha',
+        roles: [Role.USER],
+      },
+      {
+        id: '3',
+        username: 'ivka',
+        email: 'ivka@bezcisobe.cz',
+        password: 'ivka123',
+        firstName: 'Ivka',
+        lastName: 'Fischerová',
         city: 'Praha',
         roles: [Role.USER],
       },
@@ -255,6 +349,41 @@ export const apiService = {
     const rides = apiService.getRides();
     const filtered = rides.filter(r => r.id !== id);
     localStorage.setItem(STORAGE_KEYS.RIDES, JSON.stringify(filtered));
+  },
+
+  acceptRide: (rideId: string, passengerId: string): Ride => {
+    const rides = apiService.getRides();
+    const ride = rides.find(r => r.id === rideId);
+    if (!ride) throw new Error('Jízda nenalezena');
+    
+    if (ride.occupiedSeats >= ride.availableSeats) {
+      throw new Error('Nejsou k dispozici žádná volná místa');
+    }
+    
+    if (ride.passengers.includes(passengerId)) {
+      throw new Error('Již jste přihlášeni k této jízdě');
+    }
+    
+    ride.passengers.push(passengerId);
+    ride.occupiedSeats += 1;
+    localStorage.setItem(STORAGE_KEYS.RIDES, JSON.stringify(rides));
+    return ride;
+  },
+
+  cancelRideAcceptance: (rideId: string, passengerId: string): Ride => {
+    const rides = apiService.getRides();
+    const ride = rides.find(r => r.id === rideId);
+    if (!ride) throw new Error('Jízda nenalezena');
+    
+    const passengerIndex = ride.passengers.indexOf(passengerId);
+    if (passengerIndex === -1) {
+      throw new Error('Nejste přihlášeni k této jízdě');
+    }
+    
+    ride.passengers.splice(passengerIndex, 1);
+    ride.occupiedSeats -= 1;
+    localStorage.setItem(STORAGE_KEYS.RIDES, JSON.stringify(rides));
+    return ride;
   },
 
   // Track Lengths
