@@ -44,7 +44,7 @@ export const ForgottenPasswordPage = () => {
       // In a real app, this would send a password reset email
       // For now, just show success message
       setIsSubmitted(true);
-    } catch (err) {
+    } catch {
       setError('Něco se pokazilo. Zkuste to prosím znovu.');
     } finally {
       setIsLoading(false);

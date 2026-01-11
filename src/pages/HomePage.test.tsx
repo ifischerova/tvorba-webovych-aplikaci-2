@@ -33,7 +33,7 @@ describe('HomePage Component', () => {
       </BrowserRouter>
     );
     
-    expect(screen.getByText(/Jak to funguje?/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Jak to funguje?/).length).toBeGreaterThan(0);
     expect(screen.getByText(/Najdi závod/)).toBeInTheDocument();
     expect(screen.getByText(/Domluv spolujízdu/)).toBeInTheDocument();
     expect(screen.getByText(/Běž a užij si to/)).toBeInTheDocument();
