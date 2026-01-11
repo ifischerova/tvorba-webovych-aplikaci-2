@@ -4,11 +4,11 @@ A modern carpooling platform for runners built with React, TypeScript, and Vite.
 
 ## Features
 
-- 🚗 Create and manage carpooling offers for running races
-- 🏃 Find rides to popular Czech running events
-- 👥 User authentication and profiles
-- 📱 Fully responsive design
-- 🧪 Comprehensive testing (31 unit tests + 21 E2E tests)
+- Create and manage carpooling offers for running races
+- Find rides to popular Czech running events
+- User authentication and profiles
+- Fully responsive design
+- Testing (31 unit tests + 21 E2E tests)
 
 ## Security Features
 
@@ -138,9 +138,7 @@ cypress/             # Legacy Cypress files (not used)
 
 ## Documentation
 
-- **TECHNICKA_DOKUMENTACE.md** - Comprehensive technical documentation in Czech
-- **PROJECT_SUMMARY.md** - Project overview and architecture
-- **QUICK_START.md** - Quick start guide for developers
+- **TECHNICKA_DOKUMENTACE.md** - Technical documentation in Czech
 
 ## License
 
