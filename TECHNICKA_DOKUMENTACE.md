@@ -16,7 +16,7 @@ Běžci sobě je moderní webová SPA aplikace pro sdílení dopravy mezi běžc
 - **Ukládání dat**: LocalStorage (simuluje backend)
 - **Testování**:
   - Unit testy: Vitest + React Testing Library
-  - E2E testy: Playwright (dřív jsem používala Cypress, ale pak jsem to přepnula)
+  - E2E testy: Playwright
 - **Code quality**: ESLint s TypeScript pravidly
 
 ## 2. Architektura aplikace
@@ -221,12 +221,6 @@ npm run test:coverage # Zjistí, kolik kódu je pokryto testy
 ### 6.2 E2E testy (Playwright)
 
 **Kde jsou**: `tests/*.spec.ts`
-
-Playwright jsem zvolila místo Cypressu, protože:
-
-- Je rychlejší
-- Lépe funguje s moderními frameworky
-- Má lepší podporu pro více prohlížečů
 
 **Testované scénáře:**
 
@@ -522,14 +516,6 @@ Kdyby měl projekt pokračovat, přidala bych:
 **Předmět**: Tvorba webových aplikací  
 **Verze**: 1.0
 
-**Spuštění:**
-
-```bash
-npm run cypress          # Otevře Cypress UI
-npm run cypress:headless # Spustí testy v headless módu
-npm run e2e              # Spustí dev server a pak testy
-```
-
 ## 7. Optimalizace a výkon
 
 ### 7.1 Build optimalizace
@@ -581,7 +567,7 @@ npm run lint
 
 # Testy
 npm test
-npm run cypress
+npm run e2e
 ```
 
 ## 10. Další rozvoj
@@ -589,7 +575,7 @@ npm run cypress
 Možná rozšíření aplikace:
 
 - Real-time chat mezi uživateli
-- Hodnocení uživatelů/jízd
+- Hodnoce2evatelů/jízd
 - Push notifikace
 - Integrace s mapovými službami
 - Real backend API

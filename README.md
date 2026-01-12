@@ -1,6 +1,6 @@
 # Běžci sobě - React Application
 
-A modern carpooling platform for runners built with React, TypeScript, and Vite.
+A modern carpooling platform for runners built with React, TypeScript, Vite (unit and component testing) and Playwright (e2e testing).
 
 ## Features
 
@@ -116,7 +116,6 @@ src/
 ├── utils/           # Utility functions
 └── test/            # Test utilities and setup
 tests/               # E2E tests (Playwright)
-cypress/             # Legacy Cypress files (not used)
 ```
 
 ## Technologies
@@ -139,7 +138,3 @@ cypress/             # Legacy Cypress files (not used)
 ## Documentation
 
 - **TECHNICKA_DOKUMENTACE.md** - Technical documentation in Czech
-
-## License
-
-This is a university project for the "Tvorba webových aplikací" course.

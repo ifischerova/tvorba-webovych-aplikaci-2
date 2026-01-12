@@ -4,6 +4,7 @@ test.describe('User Login Flow', () => {
   test.beforeEach(async ({ page, context }) => {
     await context.clearCookies();
     await page.goto('/login');
+    await page.waitForLoadState('networkidle');
   });
 
   test('should display login form', async ({ page }) => {
@@ -52,10 +53,16 @@ test.describe('User Login Flow', () => {
     // Login first
     await page.fill('input[id="username"]', 'admin');
     await page.fill('input[id="password"]', 'admin123');
-    await page.click('button[type="submit"]');
+    
+    // Wait for navigation after form submission
+    await Promise.all([
+      page.waitForURL('/'),
+      page.click('button[type="submit"]')
+    ]);
     
     // Reload page
     await page.reload();
+    await page.waitForLoadState('networkidle');
     
     // Should still be logged in
     await expect(page.locator('text=admin')).toBeVisible();
