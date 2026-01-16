@@ -581,9 +581,3 @@ Možná rozšíření aplikace:
 - Real backend API
 - Pokročilé filtrování a vyhledávání závodů
 - Platební brána pro sdílení nákladů
-
----
-
-**Autor**: Iva Fischerová  
-**Datum**: Prosinec 2025  
-**Předmět**: Tvorba webových aplikací
